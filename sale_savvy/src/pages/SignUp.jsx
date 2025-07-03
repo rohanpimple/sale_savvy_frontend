@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function SignUp() {
 
-    const [username, setUsername] = useState()
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
-    const [gender, setGender] = useState()
-    const [dob, setDob] = useState()
-    const [role, setRole] = useState()
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [gender, setGender] = useState("")
+    const [dob, setDob] = useState("")
+    const [role, setRole] = useState("")
+
+    const navigate = useNavigate();
 
 async function handleSummit(e) {
-    e.preventDefult();
-
+    e.preventDefault();
+    navigate('/signIn')
     const signupdata = {username, email, password, gender, dob, role};
 
 try {
@@ -29,7 +32,7 @@ try {
 }
 
 return (
-    <>
+    <div>
     <form onSubmit={handleSummit}>
 
         <h3>SignUp</h3>
@@ -45,10 +48,10 @@ return (
         <input type='password' required value={password} onChange={(e) => setPassword(e.target.value)}/>
         <br /><br />
 
-        <label>Gender:</label>
-        Male<input type='radio' required value={gender} onChange={(e) => setGender(e.target.value)}/>
-        Female<input type='radio' required value={gender} onChange={(e) => setGender(e.target.value)} />
-        Other<input type='radio' required value={gender} onChange={(e) => setGender(e.target.value)}/>
+        <label>Gender:</label><br />
+        <input type='radio' name='gender' value="Male" checked={gender === "Male"} onChange={(e) => setGender(e.target.value)} /> Male
+        <input type='radio' name='gender' value="Female" checked={gender === "Female"} onChange={(e) => setGender(e.target.value)} /> Female
+        <input type='radio' name='gender' value="Other" checked={gender === "Other"} onChange={(e) => setGender(e.target.value)} /> Other
         <br /><br />
 
         <label>Dob</label>
@@ -62,6 +65,6 @@ return (
 
         <button type='submit'>SignUp</button>
     </form>
-    </>
+    </div>
 )
 }
