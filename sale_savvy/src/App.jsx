@@ -9,6 +9,8 @@ import AddProduct from './pages/AddProduct';
 import UpdateProduct from './pages/UpdateProduct';
 import SearchProduct from './pages/SearchProduct';
 import DeleteProduct from './pages/DeleteProduct';
+import AllUsers from './pages/AllUsers';
+import DeleteUsers from './pages/DeleteUsers';
 
 function App() {
   return (
@@ -17,13 +19,17 @@ function App() {
       <Route path="/signIn" element={<SignIn />} />
       <Route path="/admin" element={<Admin_page />} />
       <Route path="/customer" element={<Customer />} />
+
       <Route path="/admin/productmanagement" element={<ProductManagement />} />
       <Route path="/admin/usersmanagement" element={<UsersManagement />} />
+
       <Route path="/admin/productmanagement/add" element={<AddProduct />} />
       <Route path="/admin/productmanagement/update" element={<UpdateProduct />} />
-      
       <Route path="/admin/productmanagement/search" element={<SearchProduct />} />
       <Route path="/admin/productmanagement/delete" element={<DeleteProduct />} />
+
+      <Route path="/admin/usersmanagement/allusers" element={<AllUsers />} />
+      <Route path="/admin/usersmanagement/deleteusers" element={<DeleteUsers />} />
     </Routes>
   );
 }
