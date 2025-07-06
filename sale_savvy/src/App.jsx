@@ -11,11 +11,15 @@ import SearchProduct from './pages/SearchProduct';
 import DeleteProduct from './pages/DeleteProduct';
 import AllUsers from './pages/AllUsers';
 import DeleteUsers from './pages/DeleteUsers';
+import Cart from './pages/Cart';
+import Welcome from './pages/Welcome';
+import Receipt from './pages/Receipt';
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<SignUp />} />
+      <Route path="/" element={<Welcome />} />
+      <Route path="/signUp" element={<SignUp />} />
       <Route path="/signIn" element={<SignIn />} />
       <Route path="/admin" element={<Admin_page />} />
       <Route path="/customer" element={<Customer />} />
@@ -30,6 +34,9 @@ function App() {
 
       <Route path="/admin/usersmanagement/allusers" element={<AllUsers />} />
       <Route path="/admin/usersmanagement/deleteusers" element={<DeleteUsers />} />
+
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/receipt" element={<Receipt/>} />
     </Routes>
   );
 }

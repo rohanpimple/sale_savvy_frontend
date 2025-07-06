@@ -7,33 +7,36 @@ export default function SignIn() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    async function handleSumbit(e) {
-        e.preventDefault();
+   async function handleSumbit(e) {
+    e.preventDefault();
 
-        const signInData = { username, password };
+    const signInData = { username, password };
 
-        try {
-            const resp = await fetch("http://localhost:8080/signIn", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(signInData),
-            });
+    try {
+        const resp = await fetch("http://localhost:8080/signIn", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(signInData),
+        });
 
-            const msg = await resp.text();
-            console.log("Server Response:", msg);
+        const msg = await resp.text();
+        console.log("Server Response:", msg);
 
-            if (msg === "admin") {
-                navigate('/Admin_page');
-            } else if (msg === "customer") {
-                navigate('/Customer');
-            } else {
-                alert("Invalid username or password");
-            }
-        } catch (error) {
-            console.error("Sign-in error:", error);
-            alert("Something went wrong. Please try again.");
+        if (msg === "admin") {
+            localStorage.setItem("username", username);  // ✅ Save username
+            navigate('/Admin_page');
+        } else if (msg === "customer") {
+            localStorage.setItem("username", username);  // ✅ Save username
+            navigate('/Customer');
+        } else {
+            alert("Invalid username or password");
         }
+    } catch (error) {
+        console.error("Sign-in error:", error);
+        alert("Something went wrong. Please try again.");
     }
+}
+
 
     return (
         <div>

@@ -1,0 +1,171 @@
+/* welcome.css */
+.welcome-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.welcome-hero {
+    flex: 1;
+    background: #f8fafc;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-content {
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.welcome-content h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #1a202c;
+}
+
+.welcome-content h2 {
+    font-size: 1.6rem;
+    font-weight: normal;
+    margin-bottom: 2rem;
+    color: #4a5568;
+}
+
+.features {
+    margin-top: 2rem;
+}
+
+.features p {
+    font-size: 1.1rem;
+    margin: 0.8rem 0;
+    color: #4a5568;
+}
+
+.welcome-image {
+    max-width: 600px;
+    margin-top: 2rem;
+}
+
+.welcome-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-form-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: white;
+}
+
+.welcome-form {
+    max-width: 400px;
+    width: 100%;
+}
+
+.welcome-form h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #1a202c;
+}
+
+.welcome-form p {
+    color: #4a5568;
+    margin-bottom: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.radio-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: normal;
+}
+
+button {
+    background-color: #3182ce;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #2c5282;
+}
+
+.saved-account {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    color: #4a5568;
+}
+
+.saved-account:hover {
+    background-color: #f7fafc;
+}
+
+.terms {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: #718096;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .welcome-container {
+        flex-direction: column;
+    }
+    
+    .welcome-hero, .welcome-form-container {
+        padding: 2rem;
+    }
+    
+    .welcome-image {
+        max-width: 400px;
+    }
+}

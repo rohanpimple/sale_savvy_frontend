@@ -1,0 +1,33 @@
+.receipt-container {
+  padding: 30px;
+  max-width: 800px;
+  margin: auto;
+  background: #fdfdfd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.receipt-section {
+  margin-bottom: 20px;
+}
+
+.receipt-section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.receipt-section table th,
+.receipt-section table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.back-btn {
+  padding: 10px 20px;
+  background: #3399cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

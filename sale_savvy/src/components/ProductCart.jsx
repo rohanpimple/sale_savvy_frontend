@@ -1,46 +1,38 @@
+// src/components/ProductCart.js
 import React, { useState } from "react";
+import './ProductCard.css'; // make sure to create this CSS file
 
-/**
- * Props:
- *   product       { id, name, price, description, photo }
- *   onAddToCart   fn(product, qty)
- */
 export default function ProductCard({ product, onAddToCart }) {
   const [qty, setQty] = useState(1);
-  if (!product) return null;
 
-  const inc = () => setQty((q) => q + 1);
-  const dec = () => setQty((q) => Math.max(1, q - 1));
+  const handleAdd = () => {
+    if (qty < 1) return;
+    onAddToCart(product, qty);
+    setQty(1); // Reset to 1 after adding
+  };
 
   return (
-    <article className="product-card">
-      <figure className="product-img-wrap">
-        <img
-          src={product.photo || "/placeholder.png"}
-          alt={product.name}
-          loading="lazy"
-          onError={(e) => (e.target.src = "/placeholder.png")}
-        />
-      </figure>
+    <div className="product-card">
+      <img src={product.photo} alt={product.name} className="product-image" />
 
-      <div className="product-info">
-        <h3 className="product-title">{product.name}</h3>
-        <p className="product-price">₹{product.price}</p>
+      <div className="product-details">
+        <h3 className="product-name">{product.name}</h3>
+        <p>₹{product.price}</p>
         <p className="product-desc">{product.description}</p>
 
-        <div className="qty-control">
-          <button onClick={dec} aria-label="decrease quantity">−</button>
-          <span>{qty}</span>
-          <button onClick={inc} aria-label="increase quantity">+</button>
+        <div className="product-actions">
+          <input
+            type="number"
+            min="1"
+            value={qty}
+            onChange={(e) => setQty(Number(e.target.value))}
+            className="qty-input"
+          />
+          <button onClick={handleAdd} className="add-btn">
+            Add to Cart
+          </button>
         </div>
-
-        <button
-          className="btn btn-primary btn-sm"
-          onClick={() => onAddToCart(product, qty)}
-        >
-          Add to cart
-        </button>
       </div>
-    </article>
+    </div>
   );
 }
