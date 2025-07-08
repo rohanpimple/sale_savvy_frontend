@@ -1,49 +1,41 @@
 import React, { useState } from 'react';
+import '../style/SearchProduct.css'; // ✅ Link your new style file
 
 const SearchProduct = () => {
-  const [searchTerm, setSearchTerm] = useState('');   // ✅ Define searchTerm
+  const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
 
- const handleSearch = async () => {
-  try {
-    const response = await fetch(`http://localhost:8080/searchProduct?name=${encodeURIComponent(searchTerm)}`, {
-      method: 'GET',
-    });
-    const data = await response.json();
-    setResults(data);
-  } catch (error) {
-    console.error('Error searching products:', error);
-  }
-};
-
-
+  const handleSearch = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/searchProduct?name=${encodeURIComponent(searchTerm)}`);
+      const data = await response.json();
+      setResults(data);
+    } catch (error) {
+      console.error('Error searching products:', error);
+    }
+  };
 
   return (
-    <div className="p-6">
-      <h2 className="text-xl font-bold mb-4">Search Products</h2>
-      <div className="flex gap-2 mb-4">
+    <div className="search-container">
+      <h2>Search Products</h2>
+
+      <div className="search-bar">
         <input
           type="text"
-          placeholder="Enter keyword"
+          placeholder="Enter product name..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}   // ✅ Update state
-          className="border px-4 py-2 rounded w-64"
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button
-          onClick={handleSearch}
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-        >
-          Search
-        </button>
+        <button onClick={handleSearch}>Search</button>
       </div>
 
       {results.length === 0 ? (
-        <p>No products found</p>
+        <p className="no-results">No products found</p>
       ) : (
-        <ul>
+        <ul className="search-results">
           {results.map((product) => (
             <li key={product.id}>
-              {product.name} - ₹{product.rate}
+              <strong>{product.name}</strong> - ₹{product.rate}
             </li>
           ))}
         </ul>

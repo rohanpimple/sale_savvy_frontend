@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import '../style/DeleteProduct.css'; // ✅ Add external CSS
 
 function DeleteProductsPage() {
   const [products, setProducts] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // 🔁 Load all products on page load
   useEffect(() => {
     fetchAllProducts();
   }, []);
@@ -23,10 +23,9 @@ function DeleteProductsPage() {
     }
   };
 
-  // 🔍 Search products by name
   const handleSearch = async () => {
     if (keyword.trim() === '') {
-      fetchAllProducts(); // show all again if search is empty
+      fetchAllProducts();
       return;
     }
     try {
@@ -41,7 +40,6 @@ function DeleteProductsPage() {
     }
   };
 
-  // 🗑 Delete a product
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this product?");
     if (!confirmDelete) return;
@@ -57,7 +55,7 @@ function DeleteProductsPage() {
 
       if (response.ok) {
         alert('Product deleted successfully');
-        fetchAllProducts(); // refresh list
+        fetchAllProducts();
       } else {
         const message = await response.text();
         alert(`Failed to delete: ${message}`);
@@ -68,39 +66,33 @@ function DeleteProductsPage() {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div className="delete-container">
       <h2>Delete Products</h2>
 
-      <div>
+      <div className="search-section">
         <input
           type="text"
           placeholder="Search by product name"
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
-          style={{ padding: '8px', width: '300px' }}
         />
-        <button onClick={handleSearch} style={{ padding: '8px 12px', marginLeft: '10px' }}>
-          Search
-        </button>
+        <button onClick={handleSearch}>Search</button>
       </div>
 
-      {loading && <p>Loading...</p>}
+      {loading && <p className="loading">Loading...</p>}
 
-      <ul style={{ listStyle: 'none', padding: 0 }}>
+      <ul className="product-list">
         {products.length > 0 ? (
           products.map((product) => (
-            <li key={product.id} style={{ margin: '10px 0', borderBottom: '1px solid #ccc', paddingBottom: '8px' }}>
-              <strong>{product.name}</strong> - {product.description} - ₹{product.rate}
-              <button
-                onClick={() => handleDelete(product.id)}
-                style={{ marginLeft: '20px', padding: '5px 10px', backgroundColor: 'red', color: 'white', border: 'none' }}
-              >
-                Delete
-              </button>
+            <li key={product.id}>
+              <span>
+                <strong>{product.name}</strong> - {product.description} - ₹{product.rate}
+              </span>
+              <button onClick={() => handleDelete(product.id)}>Delete</button>
             </li>
           ))
         ) : (
-          !loading && <p>No products found.</p>
+          !loading && <p className="no-products">No products found.</p>
         )}
       </ul>
     </div>

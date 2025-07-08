@@ -1,46 +1,46 @@
 import React, { useEffect, useState } from 'react';
+import '../style/AllUsers.css'; // ✅ Add style
 
 const AllUsers = () => {
-    const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
 
-  // Fetch users from backend
-useEffect(() => {
-    fetch('http://localhost:8080/allUsers') // Make sure this matches your backend URL
-        .then((response) => {
+  useEffect(() => {
+    fetch('http://localhost:8080/allUsers')
+      .then((response) => {
         if (!response.ok) {
-            throw new Error('Failed to fetch users');
+          throw new Error('Failed to fetch users');
         }
         return response.json();
-        })
-        .then((data) => setUsers(data))
-        .catch((error) => console.error('Error fetching users:', error));
-}, []);
+      })
+      .then((data) => setUsers(data))
+      .catch((error) => console.error('Error fetching users:', error));
+  }, []);
 
-return (
-    <div className="p-4">
-        <h2 className="text-xl font-bold mb-4">All Users</h2>
-        <table className="min-w-full border border-gray-300">
+  return (
+    <div className="all-users-container">
+      <h2>All Users</h2>
+      <table className="users-table">
         <thead>
-            <tr className="bg-gray-100">
-            <th className="border p-2">ID</th>
-            <th className="border p-2">Username</th>
-            <th className="border p-2">Email</th>
-            {/* Add more columns as needed */}
-        </tr>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            {/* Add more columns if needed */}
+          </tr>
         </thead>
         <tbody>
-            {users.map((user) => (
+          {users.map((user) => (
             <tr key={user.id}>
-                <td className="border p-2">{user.id}</td>
-                <td className="border p-2">{user.username}</td>
-                <td className="border p-2">{user.email}</td>
-              {/* Add more fields if your backend sends them */}
+              <td>{user.id}</td>
+              <td>{user.username}</td>
+              <td>{user.email}</td>
+              {/* Add more fields if needed */}
             </tr>
-            ))}
+          ))}
         </tbody>
-    </table>
+      </table>
     </div>
-);
+  );
 };
 
 export default AllUsers;

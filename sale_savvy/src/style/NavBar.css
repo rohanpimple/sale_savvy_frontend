@@ -1,0 +1,95 @@
+/* Make navbar full width and clean */
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #6892bc;
+  padding: 12px 32px;
+  color: white;
+  box-sizing: border-box;
+}
+
+/* LOGO */
+.navbar-left {
+  flex: 1;
+}
+
+.navbar-brand {
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* SEARCH BAR */
+.navbar-center {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  height: 42px;
+}
+
+.category-dropdown {
+  padding: 0 12px;
+  border: none;
+  background-color: #f0f0f0;
+  font-size: 14px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0 10px;
+  border: none;
+  font-size: 14px;
+}
+
+.search-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* RIGHT LINKS */
+.navbar-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.cart-icon {
+  position: relative;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: orange;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 2px 6px;
+}

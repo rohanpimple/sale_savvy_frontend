@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProductCard from '../components/ProductCart';
-import './CustomerHome.css'; // Optional for styling
+import NavBar from '../components/NavBar'; // Import the NavBar
+import '../style/CustomerHome.css';
 
 export default function Customer_home() {
   const [products, setProducts] = useState([]);
@@ -29,64 +30,67 @@ export default function Customer_home() {
   }, []);
 
   const handleAddToCart = (product, qty) => {
-    setCart(prevCart => {
-      const existing = prevCart.find(item => item.product.id === product.id);
-      if (existing) {
-        return prevCart.map(item =>
-          item.product.id === product.id
-            ? { ...item, qty: item.qty + qty }
-            : item
-        );
-      } else {
-        return [...prevCart, { product, qty }];
-      }
-    });
+  const updatedCart = [...cart];
+  const existing = updatedCart.find(item => item.product.id === product.id);
 
-    alert(`Added ${qty} of ${product.name} to cart.`);
-  };
+  if (existing) {
+    existing.qty += qty;
+  } else {
+    updatedCart.push({ product, qty });
+  }
 
-  const handleGoToCart = () => {
-    navigate('/cart', { state: { cart } });
-  };
+  setCart(updatedCart);
+  localStorage.setItem("cart", JSON.stringify(updatedCart)); // ✅ Save to localStorage
+  alert(`Added ${qty} of ${product.name} to cart.`);
+};
+
 
   return (
-    <div className="customer-container">
-      <h1 className="title">Customer Home</h1>
-      <h2 className="subtitle">Available Products</h2>
+    <div className="customer-app">
+      {/* Add NavBar at the top */}
+      <NavBar cartCount={cart.length} />
 
-      {loading ? (
-        <p>Loading products...</p>
-      ) : error ? (
-        <p>{error}</p>
-      ) : (
-        <div className="product-grid">
-          {products.length > 0 ? (
-            products.map(product => (
-              <ProductCard
-                key={product.id}
-                product={{
-                  id: product.id,
-                  name: product.name,
-                  price: product.rate,
-                  description: product.description,
-                  photo: product.image,
-                }}
-                onAddToCart={handleAddToCart}
-              />
-            ))
-          ) : (
-            <p>No products found.</p>
-          )}
-        </div>
-      )}
+<div className="hero-section">
+  <div className="hero-text">
+    <h1>Welcome to SaleSavvy</h1>
+    <p>Find the best deals on electronics, fashion, books, and more!</p>
+    <button onClick={() => window.scrollTo({ top: 500, behavior: 'smooth' })}>Shop Now</button>
+  </div>
+  <img src="/images/hero-banner.jpg" alt="Shopping" className="hero-img" />
+</div>
 
-      {cart.length > 0 && (
-        <div className="cart-button-wrapper">
-          <button className="go-cart-btn" onClick={handleGoToCart}>
-            Go to Cart ({cart.length} items)
-          </button>
-        </div>
-      )}
+
+      
+      <div className="customer-container">
+        <h1 className="title">Welcome to SaleSavvy</h1>
+        <h2 className="subtitle">Browse Our Products</h2>
+
+        {loading ? (
+          <p className="status-msg">Loading products...</p>
+        ) : error ? (
+          <p className="status-msg error">{error}</p>
+        ) : (
+          <div className="product-grid">
+            {products.length > 0 ? (
+              products.map(product => (
+                <ProductCard
+                  key={product.id}
+                  product={{
+                    id: product.id,
+                    name: product.name,
+                    price: product.rate,
+                    description: product.description,
+                    photo: product.image,
+                  }}
+                  onAddToCart={handleAddToCart}
+                />
+              ))
+            ) : (
+              <p className="status-msg">No products found.</p>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

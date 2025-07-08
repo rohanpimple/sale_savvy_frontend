@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../style/UpdateProduct.css'; // ✅ Add CSS file
 
 export default function UpdateProduct() {
   const [products, setProducts] = useState([]);
@@ -18,7 +19,6 @@ export default function UpdateProduct() {
       .catch(err => console.error("Error loading products", err));
   }, []);
 
-  // 🟡 When a product is selected
   const handleSelect = (product) => {
     setSelectedProduct(product);
     setId(product.id);
@@ -29,7 +29,6 @@ export default function UpdateProduct() {
     setImage(product.image);
   };
 
-  // ✅ Update product
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -55,45 +54,44 @@ export default function UpdateProduct() {
 
       alert("Product updated!");
 
-      // Optional: Refresh product list
       const updated = await fetch("http://localhost:8080/getAllProducts").then(res => res.json());
       setProducts(updated);
-      setSelectedProduct(null); // hide form again
+      setSelectedProduct(null);
     } catch (error) {
       console.error("Update failed:", error);
     }
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div className="update-container">
       <h2>Update Product</h2>
 
-      <h3>All Products:</h3>
-      <ul>
-        {products.map(product => (
-          <li key={product.id}>
-            <strong>{product.name}</strong> - {product.category} - ₹{product.rate}
-            <button onClick={() => handleSelect(product)} style={{ marginLeft: '10px' }}>
-              Edit
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div className="product-list">
+        <h3>All Products</h3>
+        <ul>
+          {products.map(product => (
+            <li key={product.id}>
+              <strong>{product.name}</strong> - {product.category} - ₹{product.rate}
+              <button onClick={() => handleSelect(product)}>Edit</button>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {selectedProduct && (
-        <form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+        <form className="update-form" onSubmit={handleSubmit}>
           <h3>Editing: {selectedProduct.name}</h3>
 
-          <label>Name:</label><br />
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} /><br /><br />
+          <label>Name</label>
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
 
-          <label>Description:</label><br />
-          <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} /><br /><br />
+          <label>Description</label>
+          <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
 
-          <label>Rate:</label><br />
-          <input type="text" value={rate} onChange={(e) => setRate(e.target.value)} /><br /><br />
+          <label>Rate</label>
+          <input type="text" value={rate} onChange={(e) => setRate(e.target.value)} />
 
-          <label>Category:</label><br />
+          <label>Category</label>
           <select value={category} onChange={(e) => setCategory(e.target.value)}>
             <option value="">Select</option>
             <option value="Electronics">Electronics</option>
@@ -101,10 +99,10 @@ export default function UpdateProduct() {
             <option value="Books">Books</option>
             <option value="Home Appliances">Home Appliances</option>
             <option value="Sports">Sports</option>
-          </select><br /><br />
+          </select>
 
-          <label>Image URL:</label><br />
-          <input type="text" value={image} onChange={(e) => setImage(e.target.value)} /><br /><br />
+          <label>Image URL</label>
+          <input type="text" value={image} onChange={(e) => setImage(e.target.value)} />
 
           <button type="submit">Update Product</button>
         </form>

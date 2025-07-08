@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../style/ProductManagement.css'; // Link the new style file
 
 export default function ProductManagement() {
   return (
-    <div>
+    <div className="product-container">
       <h2>Product Management Dashboard</h2>
-      <ul>
+      <ul className="product-links">
         <li><Link to="add">➕ Add Product</Link></li>
         <li><Link to="update">✏️ Update Product</Link></li>
         <li><Link to="search">🔍 Search Product</Link></li>
