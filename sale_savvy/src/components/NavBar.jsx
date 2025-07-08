@@ -7,7 +7,6 @@ const NavBar = ({ cartCount }) => {
 
   return (
     <nav className="navbar">
-      {/* Logo Section */}
       <div className="navbar-left" onClick={() => navigate('/')}>
         <div className="navbar-brand">SaleSavvy</div>
       </div>

@@ -15,12 +15,12 @@ export default function Cart() {
   const handleDelete = (id) => {
   const updatedCart = cart.filter((item) => item.product.id !== id);
   setCart(updatedCart);
-  localStorage.setItem("cart", JSON.stringify(updatedCart)); // ✅ update localStorage
+  localStorage.setItem("cart", JSON.stringify(updatedCart)); 
 };
 
 const handleClearCart = () => {
   setCart([]);
-  localStorage.removeItem("cart"); // ✅ clear from localStorage
+  localStorage.removeItem("cart"); 
 };
 
   const handleRazorpayPayment = async () => {
@@ -52,10 +52,9 @@ const handleClearCart = () => {
       description: "Test Transaction",
       order_id: orderData.id,
       handler: function (response) {
-  setCart([]);                            // ✅ Clear cart state
-  localStorage.removeItem("cart");        // ✅ Clear cart from localStorage
+  setCart([]);                            
+  localStorage.removeItem("cart");       
 
-  // ✅ Redirect to receipt page
   navigate("/receipt", {
     state: {
       payment_id: response.razorpay_payment_id,
@@ -123,7 +122,6 @@ const handleClearCart = () => {
     <button className="pay-btn" onClick={handleRazorpayPayment}>Pay with Razorpay</button>
   </div>
 </div>
-
         </>
       )}
     </div>

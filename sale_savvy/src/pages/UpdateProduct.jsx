@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../style/UpdateProduct.css'; // ✅ Add CSS file
-
+import '../style/UpdateProduct.css'; 
 export default function UpdateProduct() {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);

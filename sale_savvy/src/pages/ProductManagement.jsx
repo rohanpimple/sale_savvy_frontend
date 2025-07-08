@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../style/ProductManagement.css'; // Link the new style file
+import '../style/ProductManagement.css'; 
 
 export default function ProductManagement() {
   return (

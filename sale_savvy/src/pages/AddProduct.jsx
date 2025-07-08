@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../style/AddProduct.css'; // ✅ Link CSS file
+import '../style/AddProduct.css'; 
 
 export default function AddProduct() {
   const [name, setName] = useState('');
@@ -81,7 +81,6 @@ export default function AddProduct() {
           <option value="Electronics">Electronics</option>
           <option value="Fashion">Fashion</option>
           <option value="Books">Books</option>
-          <option value="Home Appliances">Home Appliances</option>
           <option value="Sports">Sports</option>
         </select>
 

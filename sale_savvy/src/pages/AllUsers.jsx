@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../style/AllUsers.css'; // ✅ Add style
+import '../style/AllUsers.css'; 
 
 const AllUsers = () => {
   const [users, setUsers] = useState([]);
@@ -25,7 +25,6 @@ const AllUsers = () => {
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
-            {/* Add more columns if needed */}
           </tr>
         </thead>
         <tbody>
@@ -34,7 +33,6 @@ const AllUsers = () => {
               <td>{user.id}</td>
               <td>{user.username}</td>
               <td>{user.email}</td>
-              {/* Add more fields if needed */}
             </tr>
           ))}
         </tbody>

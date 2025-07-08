@@ -6,7 +6,7 @@
 }
 
 .customer-app {
-  padding-top: 0; /* Remove padding since NavBar is fixed */
+  padding-top: 0; 
 }
 
 .customer-container {
@@ -84,18 +84,5 @@ body {
   background-color: #0056b3;
 }
 
-.hero-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 50px;
-  background: #e6f0ff;
-}
 
-.hero-img {
-  max-width: 500px;
-  width: 100%;
-  height: auto;
-}
 

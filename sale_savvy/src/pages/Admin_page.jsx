@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../style/AdminPage.css'; // Add this CSS file
+import '../style/AdminPage.css'; 
 
 export default function Admin_page() {
   return (

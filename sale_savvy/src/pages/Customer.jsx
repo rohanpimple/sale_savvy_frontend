@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProductCard from '../components/ProductCart';
-import NavBar from '../components/NavBar'; // Import the NavBar
+import NavBar from '../components/NavBar'; 
 import '../style/CustomerHome.css';
 
 export default function Customer_home() {
@@ -40,7 +40,7 @@ export default function Customer_home() {
   }
 
   setCart(updatedCart);
-  localStorage.setItem("cart", JSON.stringify(updatedCart)); // ✅ Save to localStorage
+  localStorage.setItem("cart", JSON.stringify(updatedCart)); 
   alert(`Added ${qty} of ${product.name} to cart.`);
 };
 
@@ -50,17 +50,6 @@ export default function Customer_home() {
       {/* Add NavBar at the top */}
       <NavBar cartCount={cart.length} />
 
-<div className="hero-section">
-  <div className="hero-text">
-    <h1>Welcome to SaleSavvy</h1>
-    <p>Find the best deals on electronics, fashion, books, and more!</p>
-    <button onClick={() => window.scrollTo({ top: 500, behavior: 'smooth' })}>Shop Now</button>
-  </div>
-  <img src="/images/hero-banner.jpg" alt="Shopping" className="hero-img" />
-</div>
-
-
-      
       <div className="customer-container">
         <h1 className="title">Welcome to SaleSavvy</h1>
         <h2 className="subtitle">Browse Our Products</h2>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../style/SearchProduct.css'; // ✅ Link your new style file
+import '../style/SearchProduct.css'; 
 
 const SearchProduct = () => {
   const [searchTerm, setSearchTerm] = useState('');

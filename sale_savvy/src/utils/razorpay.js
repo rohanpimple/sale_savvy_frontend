@@ -13,14 +13,14 @@ export const loadRazorpayScript = () => {
 };
 
 export const createRazorpayOptions = ({ total, orderId, onSuccess }) => ({
-  key: "rzp_test_WisL1JpTTsUJS4", // your test key
+  key: "rzp_test_WisL1JpTTsUJS4", 
   amount: total * 100,
   currency: "INR",
   name: "Sale Savvy",
   description: "Order Payment",
   order_id: orderId,
   handler: function (response) {
-    onSuccess(response); // send payment details back
+    onSuccess(response); 
   },
   prefill: {
     name: "Test User",

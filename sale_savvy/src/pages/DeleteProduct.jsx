@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../style/DeleteProduct.css'; // ✅ Add external CSS
+import '../style/DeleteProduct.css'; 
 
 function DeleteProductsPage() {
   const [products, setProducts] = useState([]);

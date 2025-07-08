@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../style/UsersManagement.css'; // ✅ Link external style file
+import '../style/UsersManagement.css'; 
 
 export default function UsersManagement() {
   return (

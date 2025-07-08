@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../style/DeleteUsers.css'; // ✅ Add CSS file
+import '../style/DeleteUsers.css'; 
 
 export default function DeleteUsers() {
   const [users, setUsers] = useState([]);
@@ -28,7 +28,7 @@ export default function DeleteUsers() {
 
       if (response.ok) {
         alert('User deleted successfully');
-        fetchUsers(); // Refresh list
+        fetchUsers(); 
       } else {
         const msg = await response.text();
         console.error('Delete failed:', msg);

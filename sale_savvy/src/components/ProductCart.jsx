@@ -8,7 +8,7 @@ export default function ProductCard({ product, onAddToCart }) {
   const handleAdd = () => {
     if (qty < 1) return;
     onAddToCart(product, qty);
-    setQty(1); // Reset to 1 after adding
+    setQty(1); 
   };
 
   return (
